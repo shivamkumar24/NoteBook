@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "userID": 1685261190289,
+      "name": "Shivam Kumar",
+      "email": "shivamkumg@gmail.com",
+      "password": "shivamkumar24",
+      "phone": "9355228666",
+      "id": 1
+    }
+  ],
+  "notes": [
+    {
+      "id": 1,
+      "title": "test",
+      "description": "This is testing",
+      "userID": 1685261190289
+    },
+    {
+      "id": 2,
+      "title": "testing",
+      "description": "This is another testing",
+      "userID": 1685261190289
+    }
+  ]
+}
