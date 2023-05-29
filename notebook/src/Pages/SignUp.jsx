@@ -57,26 +57,30 @@ const SignUp = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "30%",
-        margin: "auto",
-        marginTop: "100px",
-        alignContent: "center",
-        borderRadius: "18px",
-        boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-      }}
+    <Box
+      width={{ base: "90%", md: "40%" }}
+      height={"auto"}
+      margin="auto"
+      marginTop={{ base: "40px", md: "100px" }}
+      alignContent="center"
+      borderRadius="18px"
+      boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
     >
       <FormControl bg="#f6f5f4" p="20px">
         <Flex>
-          <Box dispaly="block" m="auto">
-            <Text fontSize="32px" fontWeight="bold" m="5px" textAlign="center">
+          <Box m="auto">
+            <Text
+              fontSize={{ base: "22px", md: "32px" }}
+              fontWeight="bold"
+              m="5px"
+              textAlign="center"
+            >
               SignUp
             </Text>
             <Input
-              w="300px"
+              w={{ base: "300px", md: "400px" }}
+              m={{ base: "8px auto", md: "10px 5px" }}
               type="text"
-              m="10px 5px"
               id="signupname"
               placeholder="Name"
               display={{ base: "none", md: "flex" }}
@@ -84,8 +88,9 @@ const SignUp = () => {
               onChange={(e) => setSignupName(e.target.value)}
             />
             <Input
+              w={{ base: "300px", md: "400px" }}
+              m={{ base: "8px auto", md: "10px 5px" }}
               type="email"
-              m="10px 5px"
               id="signupemail"
               placeholder="Email"
               display={{ base: "none", md: "flex" }}
@@ -114,7 +119,7 @@ const SignUp = () => {
             <Button
               bg={"teal.400"}
               color={"white"}
-              m="5px"
+              m={{ base: "2px", md: "5px" }}
               onClick={() => SignUpCheck()}
             >
               SignUp
@@ -122,7 +127,7 @@ const SignUp = () => {
           </Box>
         </Flex>
       </FormControl>
-    </div>
+    </Box>
   );
 };
 

@@ -40,27 +40,25 @@ const Navbar = () => {
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Img
             h="50px"
-            width="100px"
+            width={{ base: "65px", md: "100px" }}
             src="Logo.png"
             alt="logo"
             onClick={() => navigate("/")}
           />
 
-          <Heading>Note-Book</Heading>
+          <Heading display={{ base: "none" }}>Note-Book</Heading>
 
           <Flex alignItems={"center"}>
             {isAuth && logindata !== null ? (
               <Popover placement="left">
                 <PopoverTrigger>
                   <BsPersonCircle
-                    style={{
-                      height: "30px",
-                      width: "30px",
-                      marginRight: " 45px",
-                    }}
+                    height="75px"
+                    width="30px"
+                    marginRight={{ base: "25px", md: "45px" }}
                   />
                 </PopoverTrigger>
-                <PopoverContent marginLeft="350%">
+                <PopoverContent marginLeft={{ md: "350%" }}>
                   <PopoverHeader fontWeight="semibold" bg="teal.500">
                     <Flex>
                       <Avatar

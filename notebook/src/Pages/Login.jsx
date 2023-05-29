@@ -52,25 +52,29 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "30%",
-        margin: "auto",
-        marginTop: "100px",
-        alignContent: "center",
-        borderRadius: "18px",
-        boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-      }}
+    <Box
+      width={{ base: "90%", md: "40%" }}
+      height={"auto"}
+      margin="auto"
+      marginTop={{ base: "40px", md: "100px" }}
+      alignContent="center"
+      borderRadius="18px"
+      boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
     >
-      <FormControl bg="#f6f5f4" p="20px">
+      <FormControl bg="#f6f5f4" p={{ base: "14px", md: "20px" }}>
         <Flex>
-          <Box dispaly="block" m="auto">
-            <Text fontSize="32px" fontWeight="bold" m="5px" textAlign="center">
+          <Box m="auto" h="auto">
+            <Text
+              m="5px"
+              fontWeight="bold"
+              textAlign="center"
+              fontSize={{ base: "22px", md: "32px" }}
+            >
               Login
             </Text>
             <Input
-              w="300px"
-              m="10px 5px"
+              w={{ base: "300px", md: "400px" }}
+              m={{ base: "8px auto", md: "10px 5px" }}
               id="loginemail"
               type="email"
               placeholder="Email"
@@ -79,7 +83,8 @@ const Login = () => {
               onChange={(e) => setLoginEmail(e.target.value)}
             />
             <Input
-              m="10px 5px"
+              w={{ base: "300px", md: "400px" }}
+              m={{ base: "8px auto", md: "10px 5px" }}
               id="loginpassword"
               type="password"
               placeholder="Password"
@@ -90,7 +95,7 @@ const Login = () => {
             <Button
               bg={"teal.400"}
               color={"white"}
-              m="5px"
+              m={{ base: "2px", md: "5px" }}
               onClick={LoginCheck}
             >
               Login
@@ -98,7 +103,7 @@ const Login = () => {
           </Box>
         </Flex>
       </FormControl>
-    </div>
+    </Box>
   );
 };
 
