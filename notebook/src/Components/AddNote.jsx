@@ -12,7 +12,11 @@ import { addNotes, getNotes } from "../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-let userid = logindata.userID;
+let userid;
+
+if (logindata) {
+  userid = logindata.userID;
+}
 
 const initialState = {
   title: "",
@@ -26,6 +30,8 @@ const reducerFunction = (state, action) => {
       return { ...state, title: action.payload };
     case "description":
       return { ...state, description: action.payload };
+    case "userID":
+      return { ...state, userID: action.payload };
     default:
       return state;
   }
@@ -41,43 +47,59 @@ const AddNote = () => {
   );
 
   const addNoteHandler = () => {
-    if (noteData.length && noteData.length >= 0) {
-      let notThere = true;
-      for (let i = 0; i < noteData.length; i++) {
-        if (noteData[i].title === productState.title) {
-          notThere = false;
-          break;
+    if (logindata) {
+      setProductState({ type: "userID", payload: userid });
+      if (noteData.length && noteData.length >= 0) {
+        let notThere = true;
+        for (let i = 0; i < noteData.length; i++) {
+          if (noteData[i].title === productState.title) {
+            notThere = false;
+            break;
+          }
+        }
+
+        if (notThere) {
+          dispatch(addNotes(productState)).then((re) => {
+            dispatch(getNotes);
+            toast({
+              title: "Added Successfully",
+              description: "Your new note is added now.",
+              status: "success",
+              duration: 2000,
+              isClosable: true,
+            });
+          });
+        } else {
+          toast({
+            title: "Not valid note",
+            description: "Note Already Exists",
+            status: "info",
+            duration: 2000,
+            isClosable: true,
+          });
         }
       }
 
-      if (notThere) {
-        // console.log(noteData);
-        // console.log(productState);
-        // let arr = [...noteData, productState];
-        dispatch(addNotes(productState)).then((re) => {
+      if (noteData.length === 0) {
+        let arr = [productState];
+        dispatch(addNotes(arr)).then((re) => {
           dispatch(getNotes);
           toast({
             title: "Added Successfully",
             description: "Your new note is added now.",
             status: "success",
-            duration: 5000,
+            duration: 2000,
             isClosable: true,
           });
         });
       }
-    }
-
-    if (noteData.length === 0) {
-      let arr = [productState];
-      dispatch(addNotes(arr)).then((re) => {
-        dispatch(getNotes);
-        toast({
-          title: "Added Successfully",
-          description: "Your new note is added now.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
+    } else {
+      toast({
+        title: "Not LoggedIn",
+        description: "Please login first",
+        status: "info",
+        duration: 2000,
+        isClosable: true,
       });
     }
   };

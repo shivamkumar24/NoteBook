@@ -39,8 +39,10 @@ const AllNote = () => {
   // --------------- Find notes of login user ----------------------
   const getUserNote = () => {
     for (let i = 0; i < notes.length; i++) {
-      if (notes[i].userID === accountdata.userID) {
-        userNoteArr.push(notes[i]);
+      if (accountdata) {
+        if (notes[i].userID === accountdata.userID) {
+          userNoteArr.push(notes[i]);
+        }
       }
     }
     setUserNote(userNoteArr);
@@ -49,9 +51,11 @@ const AllNote = () => {
   // -------------------- Function for Delete ----------------------
   const handleDeleteNote = (id) => {
     dispatch(deleteNotes(id));
+    getUserNote();
     toast({
       title: "Deleted Note Successfully",
       status: "info",
+      duration: 2000,
       isClosable: true,
     });
   };
@@ -70,22 +74,23 @@ const AllNote = () => {
       title: title,
       description: description,
     };
-    console.log("updatedTodoObj: ", updatedTodo);
+    // console.log("updatedTodoObj: ", updatedTodo);
     dispatch(updateNotes(updatedTodo));
+    getUserNote();
     toast({
       title: "Update Successfully",
       description: "Your note is updated now.",
       status: "success",
-      duration: 5000,
+      duration: 2000,
       isClosable: true,
     });
     navigate("/");
   };
 
   useEffect(() => {
-    getUserNote();
     dispatch(getNotes());
-  }, []);
+    getUserNote();
+  }, [userNote]);
 
   if (userNote.length !== 0) {
     return (
@@ -192,7 +197,10 @@ const AllNote = () => {
                         }}
                         colorScheme="teal"
                         variant="outline"
-                        onClick={addUpdatedNoteHandler}
+                        onClick={() => {
+                          addUpdatedNoteHandler();
+                          onClose();
+                        }}
                       >
                         Update Note
                       </Button>

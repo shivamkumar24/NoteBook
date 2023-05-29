@@ -18,14 +18,19 @@ import {
 import React from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { getNotes } from "../Redux/actions";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   let isAuth = JSON.parse(sessionStorage.getItem("isAuth")) || false;
   let logindata = JSON.parse(sessionStorage.getItem("logindata"));
 
   const handleLogout = () => {
     sessionStorage.setItem("isAuth", false);
+    sessionStorage.clear();
+    dispatch(getNotes);
     navigate("/");
   };
 
@@ -45,7 +50,7 @@ const Navbar = () => {
 
           <Flex alignItems={"center"}>
             {isAuth && logindata !== null ? (
-              <Popover placement="right">
+              <Popover placement="left">
                 <PopoverTrigger>
                   <BsPersonCircle
                     style={{

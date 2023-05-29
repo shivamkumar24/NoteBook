@@ -18,7 +18,9 @@ const Login = () => {
   const [loginPassword, setLoginPassword] = useState("");
 
   const LoginCheck = async () => {
-    let res = await axios.get(`http://localhost:8080/users`);
+    let res = await axios.get(
+      `https://notebook-server-8hzk.onrender.com/users`
+    );
     let data = await res.data;
     // console.log(data);
 

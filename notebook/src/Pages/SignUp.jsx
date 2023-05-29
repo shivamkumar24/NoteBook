@@ -30,7 +30,7 @@ const SignUp = () => {
     };
 
     axios
-      .post(`http://localhost:8080/users`, signupobj)
+      .post(`https://notebook-server-8hzk.onrender.com/users`, signupobj)
       .then((res) => {
         console.log(res.data);
         sessionStorage.setItem("signupdata", JSON.stringify(res.data));

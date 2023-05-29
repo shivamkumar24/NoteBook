@@ -11,16 +11,28 @@
   ],
   "notes": [
     {
-      "id": 1,
-      "title": "test",
-      "description": "This is testing",
+      "id": 2,
+      "title": "Redux",
+      "description": "Learn Redux",
       "userID": 1685261190289
     },
     {
-      "id": 2,
-      "title": "testing",
-      "description": "This is another testing",
-      "userID": 1685261190289
+      "title": "Data Science",
+      "description": "Learn Data Science",
+      "userID": 1685261190289,
+      "id": 3
+    },
+    {
+      "title": "React",
+      "description": "Learn React",
+      "userID": 1685261190289,
+      "id": 5
+    },
+    {
+      "title": "ExpressJS",
+      "description": "Learn ExpressJS",
+      "userID": 1685261190289,
+      "id": 6
     }
   ]
 }
